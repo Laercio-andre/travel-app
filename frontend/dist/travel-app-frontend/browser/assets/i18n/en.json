@@ -1,0 +1,51 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "ITINERARIES": "Itineraries",
+    "HOTELS": "Hotels",
+    "FLIGHTS": "Flights",
+    "REPORTS": "Reports",
+    "ADMIN": "Admin",
+    "LOGOUT": "Logout",
+    "LANGUAGE": "Switch language",
+    "THEME": "Switch theme"
+  },
+  "AUTH": {
+    "LOGIN": "Login",
+    "REGISTER": "Register",
+    "FORGOT": "Forgot password",
+    "LOGIN_TITLE": "Sign in",
+    "REGISTER_TITLE": "Create account",
+    "FORGOT_TITLE": "Recover password",
+    "RESET_TITLE": "Set new password",
+    "LOGIN_ACTION": "Sign in",
+    "REGISTER_ACTION": "Create account",
+    "FORGOT_ACTION": "Send instructions",
+    "RESET_ACTION": "Save password",
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "NEW_PASSWORD": "New password"
+  },
+  "DASHBOARD": {
+    "WELCOME_BACK": "Welcome back",
+    "ITINERARIES_COPY": "Plan stops, map views and AI help.",
+    "HOTELS_COPY": "Search accommodation and manage bookings.",
+    "FLIGHTS_COPY": "Compare fares and create price alerts.",
+    "REPORTS_COPY": "Track spending and export files."
+  },
+  "ITINERARIES": {
+    "TITLE": "Travel itineraries",
+    "SUBTITLE": "Geographic planning",
+    "NEW": "New itinerary"
+  },
+  "COMMON": {
+    "TITLE": "Title",
+    "DESTINATION": "Destination",
+    "START": "Start",
+    "END": "End",
+    "BUDGET": "Budget",
+    "CREATE": "Create"
+  }
+}

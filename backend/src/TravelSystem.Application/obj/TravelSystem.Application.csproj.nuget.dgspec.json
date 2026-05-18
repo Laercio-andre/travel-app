@@ -1,0 +1,167 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj": {}
+  },
+  "projects": {
+    "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj",
+        "projectName": "TravelSystem.Application",
+        "projectPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj",
+        "packagesPath": "/tmp/.nuget/packages/",
+        "outputPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/tmp/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj": {
+                "projectPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "false",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[33.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.4.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.4.1, )"
+            },
+            "iTextSharp.LGPLv2.Core": {
+              "target": "Package",
+              "version": "[3.4.15, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.420/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj",
+        "projectName": "TravelSystem.Domain",
+        "projectPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj",
+        "packagesPath": "/tmp/.nuget/packages/",
+        "outputPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/tmp/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "false",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.420/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

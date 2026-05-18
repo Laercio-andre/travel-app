@@ -1,0 +1,15 @@
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.csproj.AssemblyReference.cache
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.AssemblyInfoInputs.cache
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.AssemblyInfo.cs
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.csproj.CoreCompileInputs.cache
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/bin/Debug/net8.0/TravelSystem.Application.deps.json
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/bin/Debug/net8.0/TravelSystem.Application.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/bin/Debug/net8.0/TravelSystem.Application.pdb
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/bin/Debug/net8.0/TravelSystem.Domain.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/bin/Debug/net8.0/TravelSystem.Domain.pdb
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSy.5467B916.Up2Date
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/refint/TravelSystem.Application.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.pdb
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/ref/TravelSystem.Application.dll

@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "vJA2Q27qKJU=",
+  "success": true,
+  "projectFilePath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj",
+  "expectedPackageFiles": [
+    "/tmp/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/tmp/.nuget/packages/bouncycastle.cryptography/2.2.1/bouncycastle.cryptography.2.2.1.nupkg.sha512",
+    "/tmp/.nuget/packages/csvhelper/33.0.1/csvhelper.33.0.1.nupkg.sha512",
+    "/tmp/.nuget/packages/fluentvalidation/11.9.0/fluentvalidation.11.9.0.nupkg.sha512",
+    "/tmp/.nuget/packages/itextsharp.lgplv2.core/3.4.15/itextsharp.lgplv2.core.3.4.15.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.identitymodel.abstractions/7.4.1/microsoft.identitymodel.abstractions.7.4.1.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.4.1/microsoft.identitymodel.jsonwebtokens.7.4.1.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.identitymodel.logging/7.4.1/microsoft.identitymodel.logging.7.4.1.nupkg.sha512",
+    "/tmp/.nuget/packages/microsoft.identitymodel.tokens/7.4.1/microsoft.identitymodel.tokens.7.4.1.nupkg.sha512",
+    "/tmp/.nuget/packages/skiasharp/2.88.6/skiasharp.2.88.6.nupkg.sha512",
+    "/tmp/.nuget/packages/skiasharp.nativeassets.macos/2.88.6/skiasharp.nativeassets.macos.2.88.6.nupkg.sha512",
+    "/tmp/.nuget/packages/skiasharp.nativeassets.win32/2.88.6/skiasharp.nativeassets.win32.2.88.6.nupkg.sha512",
+    "/tmp/.nuget/packages/system.identitymodel.tokens.jwt/7.4.1/system.identitymodel.tokens.jwt.7.4.1.nupkg.sha512",
+    "/tmp/.nuget/packages/system.text.encoding.codepages/7.0.0/system.text.encoding.codepages.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

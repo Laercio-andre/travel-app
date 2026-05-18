@@ -1,0 +1,51 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "ITINERARIES": "Roteiros",
+    "HOTELS": "Hotéis",
+    "FLIGHTS": "Voos",
+    "REPORTS": "Relatórios",
+    "ADMIN": "Admin",
+    "LOGOUT": "Sair",
+    "LANGUAGE": "Alternar idioma",
+    "THEME": "Alternar tema"
+  },
+  "AUTH": {
+    "LOGIN": "Login",
+    "REGISTER": "Registo",
+    "FORGOT": "Recuperar senha",
+    "LOGIN_TITLE": "Entrar na conta",
+    "REGISTER_TITLE": "Criar conta",
+    "FORGOT_TITLE": "Recuperar senha",
+    "RESET_TITLE": "Definir nova senha",
+    "LOGIN_ACTION": "Entrar",
+    "REGISTER_ACTION": "Criar conta",
+    "FORGOT_ACTION": "Enviar instruções",
+    "RESET_ACTION": "Guardar senha",
+    "FIRST_NAME": "Nome",
+    "LAST_NAME": "Apelido",
+    "EMAIL": "Email",
+    "PASSWORD": "Senha",
+    "NEW_PASSWORD": "Nova senha"
+  },
+  "DASHBOARD": {
+    "WELCOME_BACK": "Bem-vindo de volta",
+    "ITINERARIES_COPY": "Planeia paragens, mapa e assistência por IA.",
+    "HOTELS_COPY": "Pesquisa acomodações e gere reservas.",
+    "FLIGHTS_COPY": "Compara preços e cria alertas.",
+    "REPORTS_COPY": "Acompanha gastos e exporta ficheiros."
+  },
+  "ITINERARIES": {
+    "TITLE": "Roteiros de viagem",
+    "SUBTITLE": "Planeamento geográfico",
+    "NEW": "Novo roteiro"
+  },
+  "COMMON": {
+    "TITLE": "Título",
+    "DESTINATION": "Destino",
+    "START": "Início",
+    "END": "Fim",
+    "BUDGET": "Orçamento",
+    "CREATE": "Criar"
+  }
+}

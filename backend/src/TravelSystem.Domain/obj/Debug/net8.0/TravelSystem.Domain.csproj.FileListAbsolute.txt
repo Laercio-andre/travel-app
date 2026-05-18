@@ -1,0 +1,11 @@
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/TravelSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/TravelSystem.Domain.AssemblyInfoInputs.cache
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/TravelSystem.Domain.AssemblyInfo.cs
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/TravelSystem.Domain.csproj.CoreCompileInputs.cache
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/bin/Debug/net8.0/TravelSystem.Domain.deps.json
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/bin/Debug/net8.0/TravelSystem.Domain.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/bin/Debug/net8.0/TravelSystem.Domain.pdb
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/TravelSystem.Domain.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/refint/TravelSystem.Domain.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/TravelSystem.Domain.pdb
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/obj/Debug/net8.0/ref/TravelSystem.Domain.dll

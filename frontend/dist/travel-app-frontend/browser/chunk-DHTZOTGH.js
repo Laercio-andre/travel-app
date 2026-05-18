@@ -1,0 +1,1 @@
+function e(t){return Array.isArray(t)?t:t.items??t.data??[]}function n(t,a){let c=URL.createObjectURL(t),r=document.createElement("a");r.href=c,r.download=a,r.click(),URL.revokeObjectURL(c)}export{e as a,n as b};
