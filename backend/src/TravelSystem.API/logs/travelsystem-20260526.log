@@ -533,3 +533,102 @@ INNER JOIN `Users` AS `u` ON `f`.`UserId` = `u`.`Id`
 WHERE `f`.`IsActive`
 2026-05-26 00:54:09.780 +01:00 [INF] Flight alert check completed.
 2026-05-26 00:54:11.782 +01:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2026-05-26 01:17:38.623 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'travel_system_dev'
+2026-05-26 01:17:39.144 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:17:39.251 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:17:39.255 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:17:39.291 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`AccessFailedCount`, `u`.`AvatarUrl`, `u`.`ConcurrencyStamp`, `u`.`CreatedAt`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`FirstName`, `u`.`IsActive`, `u`.`LastLoginAt`, `u`.`LastName`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PasswordResetToken`, `u`.`PasswordResetTokenExpiry`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`PreferredLanguage`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiry`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `Users` AS `u`
+WHERE `u`.`NormalizedEmail` = @__normalizedEmail_0
+LIMIT 2
+2026-05-26 01:17:39.625 +01:00 [INF] Flight Alert Background Service started.
+2026-05-26 01:17:39.628 +01:00 [INF] Checking flight price alerts at "2026-05-26T00:17:39.6275335Z"
+2026-05-26 01:17:39.773 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `f`.`Id`, `f`.`CreatedAt`, `f`.`CurrencyCode`, `f`.`DepartureFrom`, `f`.`DepartureTo`, `f`.`DestinationCode`, `f`.`IsActive`, `f`.`LastTriggeredAt`, `f`.`OriginCode`, `f`.`TargetPrice`, `f`.`UserId`, `u`.`Id`, `u`.`AccessFailedCount`, `u`.`AvatarUrl`, `u`.`ConcurrencyStamp`, `u`.`CreatedAt`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`FirstName`, `u`.`IsActive`, `u`.`LastLoginAt`, `u`.`LastName`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PasswordResetToken`, `u`.`PasswordResetTokenExpiry`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`PreferredLanguage`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiry`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `FlightAlerts` AS `f`
+INNER JOIN `Users` AS `u` ON `f`.`UserId` = `u`.`Id`
+WHERE `f`.`IsActive`
+2026-05-26 01:17:39.775 +01:00 [INF] Flight alert check completed.
+2026-05-26 01:17:40.087 +01:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2026-05-26 01:32:49.579 +01:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'travel_system_dev'
+2026-05-26 01:32:49.950 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:32:50.024 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:32:50.027 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:32:50.057 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`AccessFailedCount`, `u`.`AvatarUrl`, `u`.`ConcurrencyStamp`, `u`.`CreatedAt`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`FirstName`, `u`.`IsActive`, `u`.`LastLoginAt`, `u`.`LastName`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PasswordResetToken`, `u`.`PasswordResetTokenExpiry`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`PreferredLanguage`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiry`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `Users` AS `u`
+WHERE `u`.`NormalizedEmail` = @__normalizedEmail_0
+LIMIT 2
+2026-05-26 01:32:50.347 +01:00 [INF] Flight Alert Background Service started.
+2026-05-26 01:32:50.349 +01:00 [INF] Checking flight price alerts at "2026-05-26T00:32:50.3490093Z"
+2026-05-26 01:32:50.450 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `f`.`Id`, `f`.`CreatedAt`, `f`.`CurrencyCode`, `f`.`DepartureFrom`, `f`.`DepartureTo`, `f`.`DestinationCode`, `f`.`IsActive`, `f`.`LastTriggeredAt`, `f`.`OriginCode`, `f`.`TargetPrice`, `f`.`UserId`, `u`.`Id`, `u`.`AccessFailedCount`, `u`.`AvatarUrl`, `u`.`ConcurrencyStamp`, `u`.`CreatedAt`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`FirstName`, `u`.`IsActive`, `u`.`LastLoginAt`, `u`.`LastName`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PasswordResetToken`, `u`.`PasswordResetTokenExpiry`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`PreferredLanguage`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiry`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `FlightAlerts` AS `f`
+INNER JOIN `Users` AS `u` ON `f`.`UserId` = `u`.`Id`
+WHERE `f`.`IsActive`
+2026-05-26 01:32:50.452 +01:00 [INF] Flight alert check completed.
+2026-05-26 01:32:50.585 +01:00 [WRN] The ASP.NET Core developer certificate is only trusted by some clients. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+2026-05-26 01:41:13.437 +01:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM information_schema.tables
+WHERE table_type = 'BASE TABLE' AND table_schema = 'travel_system_dev'
+2026-05-26 01:41:13.740 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:41:13.803 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:41:13.804 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`ConcurrencyStamp`, `r`.`Name`, `r`.`NormalizedName`
+FROM `Roles` AS `r`
+WHERE `r`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2026-05-26 01:41:13.823 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`AccessFailedCount`, `u`.`AvatarUrl`, `u`.`ConcurrencyStamp`, `u`.`CreatedAt`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`FirstName`, `u`.`IsActive`, `u`.`LastLoginAt`, `u`.`LastName`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PasswordResetToken`, `u`.`PasswordResetTokenExpiry`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`PreferredLanguage`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiry`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `Users` AS `u`
+WHERE `u`.`NormalizedEmail` = @__normalizedEmail_0
+LIMIT 2
+2026-05-26 01:41:13.978 +01:00 [INF] Flight Alert Background Service started.
+2026-05-26 01:41:13.979 +01:00 [INF] Checking flight price alerts at "2026-05-26T00:41:13.9794001Z"
+2026-05-26 01:41:14.067 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `f`.`Id`, `f`.`CreatedAt`, `f`.`CurrencyCode`, `f`.`DepartureFrom`, `f`.`DepartureTo`, `f`.`DestinationCode`, `f`.`IsActive`, `f`.`LastTriggeredAt`, `f`.`OriginCode`, `f`.`TargetPrice`, `f`.`UserId`, `u`.`Id`, `u`.`AccessFailedCount`, `u`.`AvatarUrl`, `u`.`ConcurrencyStamp`, `u`.`CreatedAt`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`FirstName`, `u`.`IsActive`, `u`.`LastLoginAt`, `u`.`LastName`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PasswordResetToken`, `u`.`PasswordResetTokenExpiry`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`PreferredLanguage`, `u`.`RefreshToken`, `u`.`RefreshTokenExpiry`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `FlightAlerts` AS `f`
+INNER JOIN `Users` AS `u` ON `f`.`UserId` = `u`.`Id`
+WHERE `f`.`IsActive`
+2026-05-26 01:41:14.068 +01:00 [INF] Flight alert check completed.
+2026-05-26 01:41:14.165 +01:00 [WRN] The ASP.NET Core developer certificate is only trusted by some clients. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
