@@ -21,6 +21,12 @@ export interface RegisterRequest extends LoginRequest {
   lastName: string;
 }
 
+export interface ForgotPasswordResponse {
+  message: string;
+  resetToken?: string | null;
+  resetUrl?: string | null;
+}
+
 export interface ResetPasswordRequest {
   email: string;
   token: string;

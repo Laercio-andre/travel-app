@@ -13,7 +13,7 @@ public interface IAuthService
     Task<AuthResponse> LoginAsync(LoginRequest request, CancellationToken ct = default);
     Task LogoutAsync(Guid userId, CancellationToken ct = default);
     Task<AuthResponse> RefreshTokenAsync(RefreshTokenRequest request, CancellationToken ct = default);
-    Task ForgotPasswordAsync(ForgotPasswordRequest request, CancellationToken ct = default);
+    Task<string?> ForgotPasswordAsync(ForgotPasswordRequest request, CancellationToken ct = default);
     Task ResetPasswordAsync(ResetPasswordRequest request, CancellationToken ct = default);
     Task ChangePasswordAsync(Guid userId, ChangePasswordRequest request, CancellationToken ct = default);
     Task<UserProfileDto> GetProfileAsync(Guid userId, CancellationToken ct = default);

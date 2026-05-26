@@ -299,6 +299,7 @@ button:disabled {
   padding: 0.8rem 1rem;
   border-radius: 8px;
   background: var(--surface-soft);
+  overflow-wrap: anywhere;
 }
 
 .feedback.error {

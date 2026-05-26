@@ -95,18 +95,19 @@ public class AuthService : IAuthService
         return await BuildAuthResponseAsync(user);
     }
 
-    public async Task ForgotPasswordAsync(ForgotPasswordRequest request, CancellationToken ct = default)
+    public async Task<string?> ForgotPasswordAsync(ForgotPasswordRequest request, CancellationToken ct = default)
     {
         var user = await _userManager.FindByEmailAsync(request.Email);
-        if (user is null) return; // Don't reveal if email exists
+        if (user is null) return null; // Don't reveal if email exists
 
         var token = await _userManager.GeneratePasswordResetTokenAsync(user);
         user.PasswordResetToken = token;
         user.PasswordResetTokenExpiry = DateTime.UtcNow.AddHours(2);
         await _userManager.UpdateAsync(user);
 
-        var resetLink = $"{_config["Frontend:Url"]}/reset-password?email={Uri.EscapeDataString(request.Email)}&token={Uri.EscapeDataString(token)}";
+        var resetLink = $"{_config["Frontend:Url"]}/auth/reset-password?email={Uri.EscapeDataString(request.Email)}&token={Uri.EscapeDataString(token)}";
         await _emailService.SendPasswordResetAsync(request.Email, user.FirstName, resetLink, user.PreferredLanguage, ct);
+        return token;
     }
 
     public async Task ResetPasswordAsync(ResetPasswordRequest request, CancellationToken ct = default)

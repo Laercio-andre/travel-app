@@ -17,6 +17,12 @@ public record LoginRequest(
 
 public record ForgotPasswordRequest(string Email);
 
+public record ForgotPasswordResponse(
+    string Message,
+    string? ResetToken = null,
+    string? ResetUrl = null
+);
+
 public record ResetPasswordRequest(
     string Email,
     string Token,

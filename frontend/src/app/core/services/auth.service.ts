@@ -3,7 +3,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, finalize, tap, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AuthUser, LoginRequest, RegisterRequest, ResetPasswordRequest, UserRole } from '../models/auth.models';
+import { AuthUser, ForgotPasswordResponse, LoginRequest, RegisterRequest, ResetPasswordRequest, UserRole } from '../models/auth.models';
 
 const STORAGE_KEY = 'travel_app_auth';
 
@@ -33,8 +33,8 @@ export class AuthService {
     this.router.navigateByUrl('/auth/login');
   }
 
-  forgotPassword(email: string): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/api/auth/forgot-password`, { email });
+  forgotPassword(email: string): Observable<ForgotPasswordResponse> {
+    return this.http.post<ForgotPasswordResponse>(`${this.apiUrl}/api/auth/forgot-password`, { email });
   }
 
   resetPassword(payload: ResetPasswordRequest): Observable<void> {

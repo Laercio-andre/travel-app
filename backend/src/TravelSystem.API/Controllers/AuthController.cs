@@ -12,11 +12,19 @@ public class AuthController : ControllerBase
 {
     private readonly IAuthService _auth;
     private readonly ICurrentUserService _currentUser;
+    private readonly IWebHostEnvironment _environment;
+    private readonly IConfiguration _configuration;
 
-    public AuthController(IAuthService auth, ICurrentUserService currentUser)
+    public AuthController(
+        IAuthService auth,
+        ICurrentUserService currentUser,
+        IWebHostEnvironment environment,
+        IConfiguration configuration)
     {
         _auth = auth;
         _currentUser = currentUser;
+        _environment = environment;
+        _configuration = configuration;
     }
 
     /// <summary>Registar novo utilizador</summary>
@@ -54,8 +62,17 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request, CancellationToken ct)
     {
-        await _auth.ForgotPasswordAsync(request, ct);
-        return Ok(new { message = "PASSWORD_RESET_EMAIL_SENT" });
+        var token = await _auth.ForgotPasswordAsync(request, ct);
+        var frontendUrl = _configuration["Frontend:Url"]?.TrimEnd('/') ?? "http://localhost:4200";
+        var resetUrl = token is null
+            ? null
+            : $"{frontendUrl}/auth/reset-password?email={Uri.EscapeDataString(request.Email)}&token={Uri.EscapeDataString(token)}";
+
+        return Ok(new ForgotPasswordResponse(
+            "PASSWORD_RESET_EMAIL_SENT",
+            _environment.IsDevelopment() ? token : null,
+            _environment.IsDevelopment() ? resetUrl : null
+        ));
     }
 
     /// <summary>Redefinir senha com token</summary>
