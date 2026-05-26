@@ -49,7 +49,20 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    await db.Database.MigrateAsync();
+    await db.Database.EnsureCreatedAsync();
+
+    if (!await TableExistsAsync(db, "Roles"))
+    {
+        if (!app.Environment.IsDevelopment())
+        {
+            throw new InvalidOperationException("Database schema is incomplete. Apply migrations or recreate the database before starting the API.");
+        }
+
+        Log.Warning("Development database schema is incomplete. Recreating database...");
+        await db.Database.EnsureDeletedAsync();
+        await db.Database.EnsureCreatedAsync();
+    }
+
     await DbSeeder.SeedAsync(scope.ServiceProvider);
 }
 
@@ -79,3 +92,28 @@ app.UseAuthorization();
 app.MapControllers();
 
 await app.RunAsync();
+
+static async Task<bool> TableExistsAsync(AppDbContext db, string tableName)
+{
+    var connection = db.Database.GetDbConnection();
+    if (connection.State != System.Data.ConnectionState.Open)
+    {
+        await connection.OpenAsync();
+    }
+
+    await using var command = connection.CreateCommand();
+    command.CommandText = """
+        SELECT COUNT(*)
+        FROM information_schema.tables
+        WHERE table_schema = DATABASE()
+          AND table_name = @tableName
+        """;
+
+    var parameter = command.CreateParameter();
+    parameter.ParameterName = "@tableName";
+    parameter.Value = tableName;
+    command.Parameters.Add(parameter);
+
+    var result = await command.ExecuteScalarAsync();
+    return Convert.ToInt32(result) > 0;
+}

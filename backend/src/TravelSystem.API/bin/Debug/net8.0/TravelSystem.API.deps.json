@@ -676,9 +676,6 @@
         }
       },
       "TravelSystem.Domain/1.0.0": {
-        "dependencies": {
-          "Microsoft.Extensions.Identity.Stores": "8.0.0"
-        },
         "runtime": {
           "TravelSystem.Domain.dll": {
             "assemblyVersion": "1.0.0",
@@ -696,8 +693,7 @@
           "Pomelo.EntityFrameworkCore.MySql": "8.0.0",
           "RestSharp": "111.4.0",
           "System.IdentityModel.Tokens.Jwt": "7.4.1",
-          "TravelSystem.Application": "1.0.0",
-          "TravelSystem.Domain": "1.0.0"
+          "TravelSystem.Application": "1.0.0"
         },
         "runtime": {
           "TravelSystem.Infrastructure.dll": {

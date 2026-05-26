@@ -247,12 +247,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.Extensions.Identity.Stores": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -265,6 +259,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -298,9 +295,6 @@
             "projectReferences": {
               "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj": {
                 "projectPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/TravelSystem.Application.csproj"
-              },
-              "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj": {
-                "projectPath": "/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Domain/TravelSystem.Domain.csproj"
               }
             }
           }

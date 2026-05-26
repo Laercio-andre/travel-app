@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TravelSystem.Domain.Entities;
 
 namespace TravelSystem.Infrastructure.Data;
@@ -23,6 +24,12 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        var stringListComparer = new ValueComparer<List<string>>(
+            (left, right) => left != null && right != null && left.SequenceEqual(right),
+            value => value.Aggregate(0, (hash, item) => HashCode.Combine(hash, item.GetHashCode())),
+            value => value.ToList()
+        );
 
         // Rename Identity tables for clarity
         builder.Entity<User>().ToTable("Users");
@@ -113,7 +120,8 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
                 .HasConversion(
                     v => string.Join(',', v),
                     v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList()
-                );
+                )
+                .Metadata.SetValueComparer(stringListComparer);
             e.HasMany(h => h.Rooms).WithOne(r => r.Hotel)
                 .HasForeignKey(r => r.HotelId).OnDelete(DeleteBehavior.Cascade);
         });

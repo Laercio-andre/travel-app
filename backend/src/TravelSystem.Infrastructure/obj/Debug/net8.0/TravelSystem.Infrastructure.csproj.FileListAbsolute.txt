@@ -17,3 +17,4 @@
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Infrastructure/obj/Debug/net8.0/TravelSystem.Infrastructure.pdb
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Infrastructure/obj/Debug/net8.0/TravelSystem.Infrastructure.genruntimeconfig.cache
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Infrastructure/obj/Debug/net8.0/ref/TravelSystem.Infrastructure.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Infrastructure/obj/Debug/net8.0/TravelSystem.Infrastructure.sourcelink.json

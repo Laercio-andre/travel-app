@@ -1,0 +1,28 @@
+2026-05-19 08:27:46.973 +01:00 [WRN] The property 'Hotel.Amenities' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2026-05-19 08:27:49.962 +01:00 [WRN] The property 'Hotel.Amenities' is a collection or enumeration type with a value converter but with no value comparer. Set a value comparer to ensure the collection/enumeration elements are compared correctly.
+2026-05-19 08:28:03.594 +01:00 [INF] Executed DbCommand (11,044ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE DATABASE `travel_system_dev`;
+2026-05-19 08:28:20.549 +01:00 [INF] Executed DbCommand (6,768ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+2026-05-19 08:28:52.563 +01:00 [ERR] Failed executing DbCommand (32,011ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Flights` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `ExternalId` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `Provider` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `Airline` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
+    `FlightNumber` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
+    `OriginCode` varchar(3) CHARACTER SET utf8mb4 NOT NULL,
+    `DestinationCode` varchar(3) CHARACTER SET utf8mb4 NOT NULL,
+    `OriginCity` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `DestinationCity` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `DepartureAt` datetime(6) NOT NULL,
+    `ArrivalAt` datetime(6) NOT NULL,
+    `DurationMinutes` int NOT NULL,
+    `Stops` int NOT NULL,
+    `CabinClass` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `Price` decimal(10,2) NOT NULL,
+    `CurrencyCode` varchar(3) CHARACTER SET utf8mb4 NOT NULL,
+    `SeatsAvailable` int NOT NULL,
+    `CachedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_Flights` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;

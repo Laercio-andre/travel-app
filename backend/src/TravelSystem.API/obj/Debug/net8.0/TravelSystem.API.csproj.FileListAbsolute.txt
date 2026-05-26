@@ -77,3 +77,4 @@
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.API/obj/Debug/net8.0/TravelSystem.API.pdb
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.API/obj/Debug/net8.0/TravelSystem.API.genruntimeconfig.cache
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.API/obj/Debug/net8.0/ref/TravelSystem.API.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.API/obj/Debug/net8.0/TravelSystem.API.sourcelink.json

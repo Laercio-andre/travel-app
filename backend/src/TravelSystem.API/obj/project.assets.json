@@ -1330,15 +1330,15 @@
       "TravelSystem.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.Extensions.Identity.Stores": "8.0.0"
-        },
         "compile": {
           "bin/placeholder/TravelSystem.Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/TravelSystem.Domain.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "TravelSystem.Infrastructure/1.0.0": {
         "type": "project",
@@ -1352,8 +1352,7 @@
           "Pomelo.EntityFrameworkCore.MySql": "8.0.0",
           "RestSharp": "111.4.0",
           "System.IdentityModel.Tokens.Jwt": "7.4.1",
-          "TravelSystem.Application": "1.0.0",
-          "TravelSystem.Domain": "1.0.0"
+          "TravelSystem.Application": "1.0.0"
         },
         "compile": {
           "bin/placeholder/TravelSystem.Infrastructure.dll": {}

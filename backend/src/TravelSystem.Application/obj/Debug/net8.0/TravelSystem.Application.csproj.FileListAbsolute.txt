@@ -13,3 +13,4 @@
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/refint/TravelSystem.Application.dll
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.pdb
 /home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/ref/TravelSystem.Application.dll
+/home/andre-laercio/Documentos/travel-app/backend/src/TravelSystem.Application/obj/Debug/net8.0/TravelSystem.Application.sourcelink.json
