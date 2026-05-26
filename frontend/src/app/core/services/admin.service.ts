@@ -17,4 +17,16 @@ export class AdminService {
   deactivate(id: string) {
     return this.http.patch<AdminUser>(`${this.base}/users/${id}/deactivate`, {});
   }
+
+  activate(id: string) {
+    return this.http.patch<AdminUser>(`${this.base}/users/${id}/activate`, {});
+  }
+
+  setRole(id: string, role: 'Traveler' | 'Admin') {
+    return this.http.patch<AdminUser>(`${this.base}/users/${id}/role`, { role });
+  }
+
+  sendPasswordReset(id: string) {
+    return this.http.post<{ message: string }>(`${this.base}/users/${id}/password-reset`, {});
+  }
 }

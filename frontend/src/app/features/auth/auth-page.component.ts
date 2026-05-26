@@ -2,7 +2,7 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { Observable, finalize } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { FeedbackComponent } from '../../shared/components/feedback.component';
@@ -49,7 +49,6 @@ export class AuthPageComponent implements OnInit {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
-  private readonly translate = inject(TranslateService);
 
   readonly loading = signal(false);
   readonly error = signal('');
@@ -99,10 +98,7 @@ export class AuthPageComponent implements OnInit {
     request.pipe(finalize(() => this.loading.set(false))).subscribe({
       next: (result) => {
         if (this.mode() === 'forgot') {
-          const response = result as { resetToken?: string | null; resetUrl?: string | null };
-          this.success.set(response.resetToken
-            ? this.translate.instant('AUTH.FORGOT_DEV_SUCCESS', { token: response.resetToken, url: response.resetUrl })
-            : 'AUTH.FORGOT_SUCCESS');
+          this.success.set('AUTH.FORGOT_SUCCESS');
           return;
         }
 
@@ -160,6 +156,14 @@ export class AuthPageComponent implements OnInit {
 
     if (identityMessage === 'INVALID_CREDENTIALS') {
       return 'AUTH.ERROR_INVALID_CREDENTIALS';
+    }
+
+    if (identityMessage === 'EMAIL_NOT_CONFIGURED') {
+      return 'AUTH.ERROR_EMAIL_NOT_CONFIGURED';
+    }
+
+    if (identityMessage === 'EMAIL_SEND_FAILED') {
+      return 'AUTH.ERROR_EMAIL_SEND_FAILED';
     }
 
     return 'AUTH.ERROR_GENERIC';

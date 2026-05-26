@@ -35,6 +35,6 @@ export class FlightService {
   }
 
   toggleAlert(id: string) {
-    return this.http.patch<FlightAlert>(`${this.base}/alerts/${id}/toggle`, {});
+    return this.http.patch<void>(`${this.base}/alerts/${id}/toggle`, {});
   }
 }

@@ -28,7 +28,6 @@
     "PASSWORD": "Senha",
     "NEW_PASSWORD": "Nova senha",
     "FORGOT_SUCCESS": "Pedido concluído com sucesso. Verifica o email.",
-    "FORGOT_DEV_SUCCESS": "Pedido concluído. Token de recuperação: {{token}}. Link: {{url}}",
     "RESET_SUCCESS": "Senha redefinida com sucesso.",
     "ERROR_INVALID_EMAIL": "Indica um email válido.",
     "ERROR_NAME_REQUIRED": "Indica o primeiro e o último nome.",
@@ -38,10 +37,14 @@
     "ERROR_PASSWORD_DIGIT": "A senha deve ter pelo menos 6 caracteres e 1 número.",
     "ERROR_PASSWORD_SHORT": "A senha deve ter pelo menos 6 caracteres.",
     "ERROR_INVALID_CREDENTIALS": "Email ou senha inválidos.",
+    "ERROR_EMAIL_NOT_CONFIGURED": "O envio de email ainda não está configurado no backend.",
+    "ERROR_EMAIL_SEND_FAILED": "Não foi possível enviar o email de recuperação. Verifica a configuração SMTP.",
     "ERROR_GENERIC": "Não foi possível concluir o pedido. Verifica os dados e tenta novamente."
   },
   "DASHBOARD": {
     "WELCOME_BACK": "Bem-vindo de volta",
+    "AUTO_LOAD": "Roteiros, hotéis e voos existentes são carregados automaticamente.",
+    "LOAD_ERROR": "Não foi possível carregar as informações iniciais.",
     "ITINERARIES_COPY": "Planeia paragens, mapa e assistência por IA.",
     "HOTELS_COPY": "Pesquisa acomodações e gere reservas.",
     "FLIGHTS_COPY": "Compara preços e cria alertas.",
@@ -104,7 +107,14 @@
   "ADMIN": {
     "TITLE": "Gestão de utilizadores",
     "STATUS": "Estado",
+    "ACTIONS": "Ações",
+    "ACTIVATE": "Ativar conta",
     "DEACTIVATE": "Desativar",
+    "MAKE_ADMIN": "Tornar administrador",
+    "MAKE_TRAVELER": "Tornar cliente",
+    "SEND_RESET": "Enviar email de reset",
+    "RESET_SENT": "Email de redefinição enviado.",
+    "ACTION_ERROR": "Não foi possível executar a ação.",
     "LOAD_ERROR": "Não foi possível carregar utilizadores."
   },
   "COMMON": {
@@ -133,6 +143,7 @@
     "SEND": "Enviar",
     "ACTIVE": "Ativo",
     "INACTIVE": "Inativo",
-    "PAUSED": "Pausado"
+    "PAUSED": "Pausado",
+    "VIEW_ALL": "Ver tudo"
   }
 }

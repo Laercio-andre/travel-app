@@ -185,14 +185,57 @@ public class AuthService : IAuthService
         return result;
     }
 
-    public async Task<bool> DeactivateUserAsync(Guid userId, CancellationToken ct = default)
+    public async Task<UserProfileDto> ActivateUserAsync(Guid userId, CancellationToken ct = default)
+    {
+        var user = await _userManager.FindByIdAsync(userId.ToString())
+            ?? throw new KeyNotFoundException("USER_NOT_FOUND");
+
+        user.IsActive = true;
+        await _userManager.UpdateAsync(user);
+
+        var roles = await _userManager.GetRolesAsync(user);
+        return MapToProfile(user, roles.FirstOrDefault() ?? "Traveler");
+    }
+
+    public async Task<UserProfileDto> DeactivateUserAsync(Guid userId, CancellationToken ct = default)
     {
         var user = await _userManager.FindByIdAsync(userId.ToString())
             ?? throw new KeyNotFoundException("USER_NOT_FOUND");
 
         user.IsActive = false;
         await _userManager.UpdateAsync(user);
-        return true;
+
+        var roles = await _userManager.GetRolesAsync(user);
+        return MapToProfile(user, roles.FirstOrDefault() ?? "Traveler");
+    }
+
+    public async Task<UserProfileDto> SetUserRoleAsync(Guid userId, SetUserRoleRequest request, CancellationToken ct = default)
+    {
+        var role = request.Role.Trim();
+        if (role is not ("Traveler" or "Admin"))
+            throw new ArgumentException("INVALID_ROLE");
+
+        await EnsureRoleExistsAsync(role);
+
+        var user = await _userManager.FindByIdAsync(userId.ToString())
+            ?? throw new KeyNotFoundException("USER_NOT_FOUND");
+
+        var currentRoles = await _userManager.GetRolesAsync(user);
+        if (currentRoles.Count > 0)
+        {
+            await _userManager.RemoveFromRolesAsync(user, currentRoles);
+        }
+
+        await _userManager.AddToRoleAsync(user, role);
+        return MapToProfile(user, role);
+    }
+
+    public async Task<string?> SendPasswordResetAsync(Guid userId, CancellationToken ct = default)
+    {
+        var user = await _userManager.FindByIdAsync(userId.ToString())
+            ?? throw new KeyNotFoundException("USER_NOT_FOUND");
+
+        return await ForgotPasswordAsync(new ForgotPasswordRequest(user.Email!), ct);
     }
 
     // ── Private helpers ──────────────────────────────────────────────────────

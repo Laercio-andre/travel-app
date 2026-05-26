@@ -7,19 +7,20 @@ import { Flight, FlightAlert } from '../../core/models/travel.models';
 import { FlightService } from '../../core/services/flight.service';
 import { EmptyStateComponent } from '../../shared/components/empty-state.component';
 import { FeedbackComponent } from '../../shared/components/feedback.component';
+import { IconComponent } from '../../shared/components/icon.component';
 
 @Component({
   selector: 'app-flights',
   standalone: true,
-  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe, TranslateModule, EmptyStateComponent, FeedbackComponent],
+  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe, TranslateModule, EmptyStateComponent, FeedbackComponent, IconComponent],
   template: `
-    <section class="page-heading compact"><p>{{ 'FLIGHTS.SUBTITLE' | translate }}</p><h1>{{ 'FLIGHTS.TITLE' | translate }}</h1></section>
+    <section class="page-heading compact"><p>{{ 'FLIGHTS.SUBTITLE' | translate }}</p><h1><app-icon name="plane" />{{ 'FLIGHTS.TITLE' | translate }}</h1></section>
     <form class="toolbar" [formGroup]="form" (ngSubmit)="search()">
       <input formControlName="origin" [placeholder]="'COMMON.ORIGIN' | translate" />
       <input formControlName="destination" [placeholder]="'COMMON.DESTINATION_CODE' | translate" />
       <input type="date" formControlName="departureDate" />
       <input type="date" formControlName="returnDate" />
-      <button class="primary" [disabled]="form.invalid || loading()">{{ 'FLIGHTS.COMPARE' | translate }}</button>
+      <button class="primary icon-label" [disabled]="form.invalid || loading()"><app-icon name="search" />{{ 'FLIGHTS.COMPARE' | translate }}</button>
     </form>
     <app-feedback [loading]="loading()" [error]="error()" [success]="success()" />
     @if (!loading() && flights().length === 0) {
@@ -32,8 +33,8 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
           <span>{{ flight.origin }} -> {{ flight.destination }}</span>
           <small>{{ flight.departureAt | date:'short' }} - {{ flight.price | currency:flight.currency }}</small>
           <div class="row">
-            <button class="primary" type="button" (click)="book(flight)">{{ 'COMMON.BOOK' | translate }}</button>
-            <button class="ghost" type="button" (click)="createAlert(flight)">{{ 'FLIGHTS.ALERT' | translate }}</button>
+            <button class="primary icon-label" type="button" (click)="book(flight)"><app-icon name="check" />{{ 'COMMON.BOOK' | translate }}</button>
+            <button class="ghost icon-label" type="button" (click)="createAlert(flight)"><app-icon name="mail" />{{ 'FLIGHTS.ALERT' | translate }}</button>
           </div>
         </article>
       }
@@ -63,6 +64,8 @@ export class FlightsComponent implements OnInit {
   readonly form = this.fb.nonNullable.group({ origin: ['', Validators.required], destination: ['', Validators.required], departureDate: ['', Validators.required], returnDate: [''] });
 
   ngOnInit(): void {
+    this.form.patchValue({ origin: 'LAD', destination: 'SDD', departureDate: this.defaultDepartureDate(), returnDate: '' });
+    this.search();
     this.service.alerts().subscribe((items) => this.alerts.set(items));
   }
 
@@ -86,10 +89,16 @@ export class FlightsComponent implements OnInit {
   }
 
   toggle(alert: FlightAlert): void {
-    this.service.toggleAlert(alert.id).subscribe((updated) => this.alerts.update((items) => items.map((item) => (item.id === updated.id ? updated : item))));
+    this.service.toggleAlert(alert.id).subscribe(() => this.alerts.update((items) => items.map((item) => (item.id === alert.id ? { ...item, enabled: !item.enabled } : item))));
   }
 
   removeAlert(id: string): void {
     this.service.deleteAlert(id).subscribe(() => this.alerts.update((items) => items.filter((alert) => alert.id !== id)));
+  }
+
+  private defaultDepartureDate(): string {
+    const date = new Date();
+    date.setDate(date.getDate() + 10);
+    return date.toISOString().slice(0, 10);
   }
 }

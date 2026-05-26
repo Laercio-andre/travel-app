@@ -110,13 +110,29 @@ public class FlightRepository : Repository<Flight>, IFlightRepository
     public FlightRepository(AppDbContext ctx) : base(ctx) { }
 
     public async Task<IEnumerable<Flight>> SearchAsync(string origin, string destination, DateTime departure, int passengers, CancellationToken ct = default)
-        => await _ctx.Flights
+    {
+        var query = _ctx.Flights
             .Where(f => f.OriginCode == origin.ToUpper() &&
                         f.DestinationCode == destination.ToUpper() &&
-                        f.DepartureAt.Date == departure.Date &&
-                        f.SeatsAvailable >= passengers)
+                        f.SeatsAvailable >= passengers);
+
+        var exactMatches = await query
+            .Where(f => f.DepartureAt.Date == departure.Date)
             .OrderBy(f => f.Price)
             .ToListAsync(ct);
+
+        if (exactMatches.Count > 0)
+        {
+            return exactMatches;
+        }
+
+        return await query
+            .Where(f => f.DepartureAt.Date >= DateTime.UtcNow.Date)
+            .OrderBy(f => f.DepartureAt)
+            .ThenBy(f => f.Price)
+            .Take(20)
+            .ToListAsync(ct);
+    }
 }
 
 // ── Booking Repository ───────────────────────────────────────────────────────

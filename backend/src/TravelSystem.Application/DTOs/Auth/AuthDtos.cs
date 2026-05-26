@@ -36,6 +36,8 @@ public record ChangePasswordRequest(
     string ConfirmPassword
 );
 
+public record SetUserRoleRequest(string Role);
+
 public record RefreshTokenRequest(string RefreshToken);
 
 public record AuthResponse(

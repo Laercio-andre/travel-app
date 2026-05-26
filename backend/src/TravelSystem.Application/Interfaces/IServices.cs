@@ -19,7 +19,10 @@ public interface IAuthService
     Task<UserProfileDto> GetProfileAsync(Guid userId, CancellationToken ct = default);
     Task<UserProfileDto> UpdateProfileAsync(Guid userId, UpdateProfileRequest request, CancellationToken ct = default);
     Task<IEnumerable<UserProfileDto>> GetAllUsersAsync(CancellationToken ct = default); // Admin only
-    Task<bool> DeactivateUserAsync(Guid userId, CancellationToken ct = default); // Admin only
+    Task<UserProfileDto> ActivateUserAsync(Guid userId, CancellationToken ct = default); // Admin only
+    Task<UserProfileDto> DeactivateUserAsync(Guid userId, CancellationToken ct = default); // Admin only
+    Task<UserProfileDto> SetUserRoleAsync(Guid userId, SetUserRoleRequest request, CancellationToken ct = default); // Admin only
+    Task<string?> SendPasswordResetAsync(Guid userId, CancellationToken ct = default); // Admin only
 }
 
 public interface IItineraryService

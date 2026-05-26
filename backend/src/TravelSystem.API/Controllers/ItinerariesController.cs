@@ -232,17 +232,49 @@ public class ReportsController : ControllerBase
 public class AdminController : ControllerBase
 {
     private readonly IAuthService _auth;
+    private readonly ICurrentUserService _currentUser;
+    private readonly IWebHostEnvironment _environment;
 
-    public AdminController(IAuthService auth) => _auth = auth;
+    public AdminController(IAuthService auth, ICurrentUserService currentUser, IWebHostEnvironment environment)
+    {
+        _auth = auth;
+        _currentUser = currentUser;
+        _environment = environment;
+    }
 
     [HttpGet("users")]
     public async Task<ActionResult<IEnumerable<UserProfileDto>>> GetAllUsers(CancellationToken ct)
         => Ok(await _auth.GetAllUsersAsync(ct));
 
     [HttpPatch("users/{userId:guid}/deactivate")]
-    public async Task<IActionResult> DeactivateUser(Guid userId, CancellationToken ct)
+    public async Task<ActionResult<UserProfileDto>> DeactivateUser(Guid userId, CancellationToken ct)
     {
-        await _auth.DeactivateUserAsync(userId, ct);
-        return NoContent();
+        if (userId == _currentUser.UserId)
+            return BadRequest(new { error = "CANNOT_DEACTIVATE_SELF" });
+
+        return Ok(await _auth.DeactivateUserAsync(userId, ct));
+    }
+
+    [HttpPatch("users/{userId:guid}/activate")]
+    public async Task<ActionResult<UserProfileDto>> ActivateUser(Guid userId, CancellationToken ct)
+        => Ok(await _auth.ActivateUserAsync(userId, ct));
+
+    [HttpPatch("users/{userId:guid}/role")]
+    public async Task<ActionResult<UserProfileDto>> SetUserRole(Guid userId, [FromBody] SetUserRoleRequest request, CancellationToken ct)
+    {
+        if (userId == _currentUser.UserId)
+            return BadRequest(new { error = "CANNOT_CHANGE_OWN_ROLE" });
+
+        return Ok(await _auth.SetUserRoleAsync(userId, request, ct));
+    }
+
+    [HttpPost("users/{userId:guid}/password-reset")]
+    public async Task<ActionResult<ForgotPasswordResponse>> SendPasswordReset(Guid userId, CancellationToken ct)
+    {
+        var token = await _auth.SendPasswordResetAsync(userId, ct);
+        return Ok(new ForgotPasswordResponse(
+            "PASSWORD_RESET_EMAIL_SENT",
+            _environment.IsDevelopment() ? token : null
+        ));
     }
 }

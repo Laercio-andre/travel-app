@@ -64,9 +64,14 @@ public static class DbSeeder
 
     private static async Task SeedAngolaTravelDataAsync(AppDbContext db, User? traveler)
     {
+        var seededHotels = CreateAngolaHotels();
         if (!db.Hotels.Any())
         {
-            db.Hotels.AddRange(CreateAngolaHotels());
+            db.Hotels.AddRange(seededHotels);
+        }
+        else
+        {
+            RepairHotelImages(db, seededHotels);
         }
 
         if (!db.Flights.Any())
@@ -84,14 +89,14 @@ public static class DbSeeder
 
     private static List<Hotel> CreateAngolaHotels() =>
     [
-        CreateHotel("ao-luanda-epic-sana", "EPIC SANA Luanda Hotel", "Rua da Missao, Ingombota", "Luanda", -8.8147, 13.2302, 5, 4.6, "Hotel central em Luanda, perto da Marginal e de zonas empresariais.", 185000, ["Wi-Fi", "Piscina", "Ginásio", "Restaurante", "Transfer"]),
-        CreateHotel("ao-luanda-presidente", "Hotel Presidente Luanda", "Largo 4 de Fevereiro", "Luanda", -8.8064, 13.2417, 4, 4.2, "Alojamento clássico junto à Baía de Luanda.", 142000, ["Wi-Fi", "Restaurante", "Vista para a baía", "Estacionamento"]),
-        CreateHotel("ao-benguela-praia-morena", "Hotel Praia Morena", "Avenida 10 de Fevereiro", "Benguela", -12.5763, 13.4055, 3, 4.1, "Base confortável para explorar Benguela, Baía Azul e Lobito.", 68000, ["Wi-Fi", "Restaurante", "Ar condicionado"]),
-        CreateHotel("ao-huila-serra-da-chela", "Hotel Serra da Chela", "Centro da cidade", "Lubango", -14.9186, 13.4925, 4, 4.3, "Ponto de partida para Tundavala, Cristo Rei e Serra da Leba.", 76000, ["Wi-Fi", "Restaurante", "Pequeno-almoço", "Estacionamento"]),
-        CreateHotel("ao-namibe-infanta", "Hotel Infotur Namibe", "Avenida Eduardo Mondlane", "Moçâmedes", -15.1961, 12.1522, 3, 4.0, "Estadia prática para visitar o Deserto do Namibe e a Praia das Miragens.", 59000, ["Wi-Fi", "Restaurante", "Ar condicionado"]),
-        CreateHotel("ao-malanje-kalandula", "Pousada das Quedas de Kalandula", "Kalandula", "Malanje", -9.0752, 16.0019, 3, 4.1, "Alojamento próximo das Quedas de Kalandula.", 62000, ["Restaurante", "Vista natural", "Estacionamento"]),
-        CreateHotel("ao-cabinda-maiorca", "Hotel Maiorca", "Centro de Cabinda", "Cabinda", -5.55, 12.1976, 3, 3.9, "Opção urbana para viagens de trabalho e lazer em Cabinda.", 71000, ["Wi-Fi", "Restaurante", "Bar"]),
-        CreateHotel("ao-huambo-ekuikui", "Hotel Ekuikui I", "Centro do Huambo", "Huambo", -12.7761, 15.7392, 4, 4.0, "Base para conhecer a cidade do Huambo e a região do Planalto Central.", 70000, ["Wi-Fi", "Restaurante", "Salas de reunião"])
+        CreateHotel("ao-luanda-epic-sana", "EPIC SANA Luanda Hotel", "Rua da Missao, Ingombota", "Luanda", -8.8147, 13.2302, 5, 4.6, "Hotel central em Luanda, perto da Marginal e de zonas empresariais.", 185000, ["Wi-Fi", "Piscina", "Ginásio", "Restaurante", "Transfer"], "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-luanda-presidente", "Hotel Presidente Luanda", "Largo 4 de Fevereiro", "Luanda", -8.8064, 13.2417, 4, 4.2, "Alojamento clássico junto à Baía de Luanda.", 142000, ["Wi-Fi", "Restaurante", "Vista para a baía", "Estacionamento"], "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-benguela-praia-morena", "Hotel Praia Morena", "Avenida 10 de Fevereiro", "Benguela", -12.5763, 13.4055, 3, 4.1, "Base confortável para explorar Benguela, Baía Azul e Lobito.", 68000, ["Wi-Fi", "Restaurante", "Ar condicionado"], "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-huila-serra-da-chela", "Hotel Serra da Chela", "Centro da cidade", "Lubango", -14.9186, 13.4925, 4, 4.3, "Ponto de partida para Tundavala, Cristo Rei e Serra da Leba.", 76000, ["Wi-Fi", "Restaurante", "Pequeno-almoço", "Estacionamento"], "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-namibe-infanta", "Hotel Infotur Namibe", "Avenida Eduardo Mondlane", "Moçâmedes", -15.1961, 12.1522, 3, 4.0, "Estadia prática para visitar o Deserto do Namibe e a Praia das Miragens.", 59000, ["Wi-Fi", "Restaurante", "Ar condicionado"], "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-malanje-kalandula", "Pousada das Quedas de Kalandula", "Kalandula", "Malanje", -9.0752, 16.0019, 3, 4.1, "Alojamento próximo das Quedas de Kalandula.", 62000, ["Restaurante", "Vista natural", "Estacionamento"], "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-cabinda-maiorca", "Hotel Maiorca", "Centro de Cabinda", "Cabinda", -5.55, 12.1976, 3, 3.9, "Opção urbana para viagens de trabalho e lazer em Cabinda.", 71000, ["Wi-Fi", "Restaurante", "Bar"], "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&w=1200&q=80"),
+        CreateHotel("ao-huambo-ekuikui", "Hotel Ekuikui I", "Centro do Huambo", "Huambo", -12.7761, 15.7392, 4, 4.0, "Base para conhecer a cidade do Huambo e a região do Planalto Central.", 70000, ["Wi-Fi", "Restaurante", "Salas de reunião"], "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80")
     ];
 
     private static Hotel CreateHotel(
@@ -105,7 +110,8 @@ public static class DbSeeder
         double guestRating,
         string description,
         decimal basePrice,
-        List<string> amenities)
+        List<string> amenities,
+        string imageUrl)
     {
         var hotel = new Hotel
         {
@@ -121,7 +127,7 @@ public static class DbSeeder
             GuestRating = guestRating,
             Description = description,
             Amenities = amenities,
-            ImageUrl = $"https://source.unsplash.com/900x600/?hotel,{Uri.EscapeDataString(city)},Angola"
+            ImageUrl = imageUrl
         };
 
         hotel.Rooms.Add(new HotelRoom
@@ -142,6 +148,19 @@ public static class DbSeeder
         });
 
         return hotel;
+    }
+
+    private static void RepairHotelImages(AppDbContext db, List<Hotel> seededHotels)
+    {
+        var imageMap = seededHotels.ToDictionary(h => h.ExternalId, h => h.ImageUrl);
+        var externalIds = imageMap.Keys.ToList();
+        foreach (var hotel in db.Hotels.Where(h => externalIds.Contains(h.ExternalId)))
+        {
+            if (string.IsNullOrWhiteSpace(hotel.ImageUrl) || hotel.ImageUrl.Contains("source.unsplash.com", StringComparison.OrdinalIgnoreCase))
+            {
+                hotel.ImageUrl = imageMap[hotel.ExternalId];
+            }
+        }
     }
 
     private static List<Flight> CreateAngolaFlights()

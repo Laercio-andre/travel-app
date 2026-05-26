@@ -37,6 +37,7 @@ export interface Hotel {
   city: string;
   country?: string;
   pricePerNight: number;
+  currencyCode?: string;
   rating?: number;
   imageUrl?: string;
   amenities?: string[];

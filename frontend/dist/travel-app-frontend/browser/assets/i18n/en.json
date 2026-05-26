@@ -38,10 +38,14 @@
     "ERROR_PASSWORD_DIGIT": "The password must have at least 6 characters and 1 number.",
     "ERROR_PASSWORD_SHORT": "The password must have at least 6 characters.",
     "ERROR_INVALID_CREDENTIALS": "Invalid email or password.",
+    "ERROR_EMAIL_NOT_CONFIGURED": "Email sending is not configured in the backend yet.",
+    "ERROR_EMAIL_SEND_FAILED": "Could not send the recovery email. Check the SMTP configuration.",
     "ERROR_GENERIC": "Could not complete the request. Check the data and try again."
   },
   "DASHBOARD": {
     "WELCOME_BACK": "Welcome back",
+    "AUTO_LOAD": "Existing itineraries, hotels and flights load automatically.",
+    "LOAD_ERROR": "Could not load the initial information.",
     "ITINERARIES_COPY": "Plan stops, map views and AI help.",
     "HOTELS_COPY": "Search accommodation and manage bookings.",
     "FLIGHTS_COPY": "Compare fares and create price alerts.",
@@ -104,7 +108,14 @@
   "ADMIN": {
     "TITLE": "User management",
     "STATUS": "Status",
+    "ACTIONS": "Actions",
+    "ACTIVATE": "Activate account",
     "DEACTIVATE": "Deactivate",
+    "MAKE_ADMIN": "Make admin",
+    "MAKE_TRAVELER": "Make traveler",
+    "SEND_RESET": "Send reset email",
+    "RESET_SENT": "Password reset email sent.",
+    "ACTION_ERROR": "Could not execute the action.",
     "LOAD_ERROR": "Could not load users."
   },
   "COMMON": {
@@ -133,6 +144,7 @@
     "SEND": "Send",
     "ACTIVE": "Active",
     "INACTIVE": "Inactive",
-    "PAUSED": "Paused"
+    "PAUSED": "Paused",
+    "VIEW_ALL": "View all"
   }
 }
