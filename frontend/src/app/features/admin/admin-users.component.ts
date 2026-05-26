@@ -1,4 +1,5 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { AdminUser } from '../../core/models/travel.models';
 import { AdminService } from '../../core/services/admin.service';
 import { FeedbackComponent } from '../../shared/components/feedback.component';
@@ -6,21 +7,21 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
 @Component({
   selector: 'app-admin-users',
   standalone: true,
-  imports: [FeedbackComponent],
+  imports: [TranslateModule, FeedbackComponent],
   template: `
-    <section class="page-heading compact"><p>Admin</p><h1>Gestão de utilizadores</h1></section>
+    <section class="page-heading compact"><p>Admin</p><h1>{{ 'ADMIN.TITLE' | translate }}</h1></section>
     <app-feedback [loading]="loading()" [error]="error()" />
     <section class="panel table-panel">
       <table>
-        <thead><tr><th>Nome</th><th>Email</th><th>Role</th><th>Estado</th><th></th></tr></thead>
+        <thead><tr><th>{{ 'COMMON.NAME' | translate }}</th><th>Email</th><th>Role</th><th>{{ 'ADMIN.STATUS' | translate }}</th><th></th></tr></thead>
         <tbody>
           @for (user of users(); track user.id) {
             <tr>
               <td>{{ user.firstName }} {{ user.lastName }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.role }}</td>
-              <td>{{ user.isActive ? 'Ativo' : 'Inativo' }}</td>
-              <td><button class="ghost" type="button" [disabled]="!user.isActive" (click)="deactivate(user)">Desativar</button></td>
+              <td>{{ (user.isActive ? 'COMMON.ACTIVE' : 'COMMON.INACTIVE') | translate }}</td>
+              <td><button class="ghost" type="button" [disabled]="!user.isActive" (click)="deactivate(user)">{{ 'ADMIN.DEACTIVATE' | translate }}</button></td>
             </tr>
           }
         </tbody>
@@ -42,7 +43,7 @@ export class AdminUsersComponent implements OnInit {
         this.loading.set(false);
       },
       error: () => {
-        this.error.set('Não foi possível carregar utilizadores.');
+        this.error.set('ADMIN.LOAD_ERROR');
         this.loading.set(false);
       }
     });

@@ -1,7 +1,8 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Observable, finalize } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { FeedbackComponent } from '../../shared/components/feedback.component';
@@ -38,7 +39,6 @@ type AuthMode = 'login' | 'register' | 'forgot' | 'reset';
           <a routerLink="/auth/login">{{ 'AUTH.LOGIN' | translate }}</a>
           <a routerLink="/auth/register">{{ 'AUTH.REGISTER' | translate }}</a>
           <a routerLink="/auth/forgot-password">{{ 'AUTH.FORGOT' | translate }}</a>
-          <a routerLink="/auth/reset-password">{{ 'AUTH.RESET_ACTION' | translate }}</a>
         </div>
       </section>
     </main>
@@ -49,6 +49,7 @@ export class AuthPageComponent implements OnInit {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
+  private readonly translate = inject(TranslateService);
 
   readonly loading = signal(false);
   readonly error = signal('');
@@ -100,18 +101,18 @@ export class AuthPageComponent implements OnInit {
         if (this.mode() === 'forgot') {
           const response = result as { resetToken?: string | null; resetUrl?: string | null };
           this.success.set(response.resetToken
-            ? `Pedido concluído. Token de recuperação: ${response.resetToken}. Link: ${response.resetUrl}`
-            : 'Pedido concluído com sucesso. Verifica o email.');
+            ? this.translate.instant('AUTH.FORGOT_DEV_SUCCESS', { token: response.resetToken, url: response.resetUrl })
+            : 'AUTH.FORGOT_SUCCESS');
           return;
         }
 
         if (this.mode() === 'reset') {
-          this.success.set('Pedido concluído com sucesso.');
+          this.success.set('AUTH.RESET_SUCCESS');
           return;
         }
         this.router.navigateByUrl('/dashboard');
       },
-      error: () => this.error.set('Não foi possível concluir o pedido. Verifica os dados e tenta novamente.')
+      error: (err: HttpErrorResponse) => this.error.set(this.authError(err))
     });
   }
 
@@ -119,25 +120,48 @@ export class AuthPageComponent implements OnInit {
     const value = this.form.getRawValue();
 
     if (this.form.controls.email.invalid) {
-      this.error.set('Indica um email válido.');
+      this.error.set('AUTH.ERROR_INVALID_EMAIL');
       return false;
     }
 
     if (this.mode() === 'register' && (!value.firstName.trim() || !value.lastName.trim())) {
-      this.error.set('Indica o primeiro e o último nome.');
+      this.error.set('AUTH.ERROR_NAME_REQUIRED');
       return false;
     }
 
     if (this.mode() !== 'forgot' && !value.password.trim()) {
-      this.error.set('Indica a senha.');
+      this.error.set('AUTH.ERROR_PASSWORD_REQUIRED');
       return false;
     }
 
     if (this.mode() === 'reset' && !value.token.trim()) {
-      this.error.set('Indica o token de recuperação.');
+      this.error.set('AUTH.ERROR_TOKEN_REQUIRED');
       return false;
     }
 
     return true;
+  }
+
+  private authError(err: HttpErrorResponse): string {
+    const code = err.error?.error ?? err.error?.message ?? '';
+    const identityMessage = typeof code === 'string' ? code : '';
+
+    if (identityMessage.includes('DuplicateEmail') || identityMessage === 'EMAIL_ALREADY_EXISTS') {
+      return 'AUTH.ERROR_EMAIL_EXISTS';
+    }
+
+    if (identityMessage.includes('Passwords must have at least one digit') || identityMessage.includes('digit')) {
+      return 'AUTH.ERROR_PASSWORD_DIGIT';
+    }
+
+    if (identityMessage.includes('PasswordTooShort')) {
+      return 'AUTH.ERROR_PASSWORD_SHORT';
+    }
+
+    if (identityMessage === 'INVALID_CREDENTIALS') {
+      return 'AUTH.ERROR_INVALID_CREDENTIALS';
+    }
+
+    return 'AUTH.ERROR_GENERIC';
   }
 }

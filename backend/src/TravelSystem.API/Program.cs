@@ -85,7 +85,10 @@ app.UseRequestLocalization(new RequestLocalizationOptions
 });
 
 app.UseSerilogRequestLogging();
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 app.UseCors("AllowAngular");
 app.UseAuthentication();
 app.UseAuthorization();

@@ -33,7 +33,7 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
       <div class="stack">
         <app-feedback [loading]="loading()" [error]="error()" />
         @if (!loading() && itineraries().length === 0) {
-          <app-empty-state title="Sem roteiros" description="Cria o primeiro roteiro para começares a planear." />
+          <app-empty-state [title]="'ITINERARIES.EMPTY_TITLE' | translate" [description]="'ITINERARIES.EMPTY_DESCRIPTION' | translate" />
         }
         <div class="card-grid">
           @for (itinerary of itineraries(); track itinerary.id) {
@@ -71,7 +71,7 @@ export class ItineraryListComponent implements OnInit {
     this.loading.set(true);
     this.service.list().pipe(finalize(() => this.loading.set(false))).subscribe({
       next: (items) => this.itineraries.set(items),
-      error: () => this.error.set('Não foi possível carregar os roteiros.')
+      error: () => this.error.set('ITINERARIES.LOAD_ERROR')
     });
   }
 
@@ -82,7 +82,7 @@ export class ItineraryListComponent implements OnInit {
         this.itineraries.update((items) => [item, ...items]);
         this.form.reset({ title: '', destination: '', startDate: '', endDate: '', budget: 0 });
       },
-      error: () => this.error.set('Não foi possível criar o roteiro.')
+      error: () => this.error.set('ITINERARIES.CREATE_ERROR')
     });
   }
 }

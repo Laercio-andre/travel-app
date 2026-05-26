@@ -1,6 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { finalize } from 'rxjs';
 import { Booking, Hotel } from '../../core/models/travel.models';
 import { HotelService } from '../../core/services/hotel.service';
@@ -10,19 +11,19 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
 @Component({
   selector: 'app-hotels',
   standalone: true,
-  imports: [ReactiveFormsModule, CurrencyPipe, EmptyStateComponent, FeedbackComponent],
+  imports: [ReactiveFormsModule, CurrencyPipe, TranslateModule, EmptyStateComponent, FeedbackComponent],
   template: `
-    <section class="page-heading compact"><p>Acomodações</p><h1>Pesquisa e reservas</h1></section>
+    <section class="page-heading compact"><p>{{ 'HOTELS.SUBTITLE' | translate }}</p><h1>{{ 'HOTELS.TITLE' | translate }}</h1></section>
     <form class="toolbar" [formGroup]="form" (ngSubmit)="search()">
-      <input formControlName="city" placeholder="Cidade" />
+      <input formControlName="city" [placeholder]="'COMMON.CITY' | translate" />
       <input type="date" formControlName="checkIn" />
       <input type="date" formControlName="checkOut" />
       <input type="number" formControlName="guests" min="1" />
-      <button class="primary" [disabled]="form.invalid || loading()">Pesquisar</button>
+      <button class="primary" [disabled]="form.invalid || loading()">{{ 'COMMON.SEARCH' | translate }}</button>
     </form>
     <app-feedback [loading]="loading()" [error]="error()" [success]="success()" />
     @if (!loading() && hotels().length === 0) {
-      <app-empty-state title="Sem resultados" description="Pesquisa uma cidade para ver hotéis disponíveis." />
+      <app-empty-state [title]="'HOTELS.EMPTY_TITLE' | translate" [description]="'HOTELS.EMPTY_DESCRIPTION' | translate" />
     }
     <section class="card-grid">
       @for (hotel of hotels(); track hotel.id) {
@@ -31,16 +32,16 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
           <strong>{{ hotel.name }}</strong>
           <span>{{ hotel.city }} {{ hotel.country }}</span>
           <small>{{ hotel.rating || 0 }}/5 - {{ hotel.pricePerNight | currency }}</small>
-          <button class="primary" type="button" (click)="book(hotel)">Reservar</button>
+          <button class="primary" type="button" (click)="book(hotel)">{{ 'COMMON.BOOK' | translate }}</button>
         </article>
       }
     </section>
     <section class="panel stack">
-      <h2>Reservas</h2>
+      <h2>{{ 'HOTELS.BOOKINGS' | translate }}</h2>
       @for (booking of bookings(); track booking.id) {
         <div class="row">
           <span>{{ booking.status }} - {{ booking.totalPrice | currency }}</span>
-          <button class="ghost" type="button" (click)="cancel(booking.id)">Cancelar</button>
+          <button class="ghost" type="button" (click)="cancel(booking.id)">{{ 'COMMON.CANCEL' | translate }}</button>
         </div>
       }
     </section>
@@ -65,7 +66,7 @@ export class HotelsComponent implements OnInit {
     this.error.set('');
     this.service.search(this.form.getRawValue()).pipe(finalize(() => this.loading.set(false))).subscribe({
       next: (items) => this.hotels.set(items),
-      error: () => this.error.set('Não foi possível pesquisar hotéis.')
+      error: () => this.error.set('HOTELS.SEARCH_ERROR')
     });
   }
 
@@ -73,9 +74,9 @@ export class HotelsComponent implements OnInit {
     this.service.book({ hotelId: hotel.id, ...this.form.getRawValue() }).subscribe({
       next: (booking) => {
         this.bookings.update((items) => [booking, ...items]);
-        this.success.set('Reserva criada com sucesso.');
+        this.success.set('HOTELS.BOOK_SUCCESS');
       },
-      error: () => this.error.set('Não foi possível criar a reserva.')
+      error: () => this.error.set('HOTELS.BOOK_ERROR')
     });
   }
 

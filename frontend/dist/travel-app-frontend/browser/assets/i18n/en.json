@@ -26,7 +26,19 @@
     "LAST_NAME": "Last name",
     "EMAIL": "Email",
     "PASSWORD": "Password",
-    "NEW_PASSWORD": "New password"
+    "NEW_PASSWORD": "New password",
+    "FORGOT_SUCCESS": "Request completed successfully. Check your email.",
+    "FORGOT_DEV_SUCCESS": "Request completed. Recovery token: {{token}}. Link: {{url}}",
+    "RESET_SUCCESS": "Password reset successfully.",
+    "ERROR_INVALID_EMAIL": "Enter a valid email.",
+    "ERROR_NAME_REQUIRED": "Enter first and last name.",
+    "ERROR_PASSWORD_REQUIRED": "Enter the password.",
+    "ERROR_TOKEN_REQUIRED": "Enter the recovery token.",
+    "ERROR_EMAIL_EXISTS": "This email is already registered. Sign in or recover the password.",
+    "ERROR_PASSWORD_DIGIT": "The password must have at least 6 characters and 1 number.",
+    "ERROR_PASSWORD_SHORT": "The password must have at least 6 characters.",
+    "ERROR_INVALID_CREDENTIALS": "Invalid email or password.",
+    "ERROR_GENERIC": "Could not complete the request. Check the data and try again."
   },
   "DASHBOARD": {
     "WELCOME_BACK": "Welcome back",
@@ -38,14 +50,89 @@
   "ITINERARIES": {
     "TITLE": "Travel itineraries",
     "SUBTITLE": "Geographic planning",
-    "NEW": "New itinerary"
+    "NEW": "New itinerary",
+    "EMPTY_TITLE": "No itineraries",
+    "EMPTY_DESCRIPTION": "Create your first itinerary to start planning.",
+    "LOAD_ERROR": "Could not load itineraries.",
+    "CREATE_ERROR": "Could not create itinerary."
+  },
+  "ITINERARY_DETAIL": {
+    "MAP_TITLE": "Itinerary map",
+    "MAP_HINT": "Click the map to fill latitude and longitude for the next stop.",
+    "MAP_ERROR": "Could not load the free map.",
+    "NEW_STOP": "New stop",
+    "ADD_STOP": "Add stop",
+    "AI_TITLE": "AI assistant",
+    "AI_PLACEHOLDER": "Ask for suggestions, optimizations or estimates...",
+    "LOAD_ERROR": "Could not load itinerary.",
+    "ADD_STOP_ERROR": "Could not add stop.",
+    "AI_ERROR": "The assistant did not respond. Try again."
+  },
+  "HOTELS": {
+    "TITLE": "Search and bookings",
+    "SUBTITLE": "Accommodation",
+    "EMPTY_TITLE": "No results",
+    "EMPTY_DESCRIPTION": "Search a city to see available hotels.",
+    "BOOKINGS": "Bookings",
+    "SEARCH_ERROR": "Could not search hotels.",
+    "BOOK_SUCCESS": "Booking created successfully.",
+    "BOOK_ERROR": "Could not create booking."
+  },
+  "FLIGHTS": {
+    "TITLE": "Comparison and alerts",
+    "SUBTITLE": "Flights",
+    "COMPARE": "Compare",
+    "ALERT": "Alert",
+    "ALERTS": "Price alerts",
+    "EMPTY_TITLE": "No flights",
+    "EMPTY_DESCRIPTION": "Fill origin and destination to compare prices.",
+    "SEARCH_ERROR": "Could not search flights.",
+    "BOOK_SUCCESS": "Flight booking created successfully.",
+    "BOOK_ERROR": "Could not book flight."
+  },
+  "REPORTS": {
+    "TITLE": "Reports and export",
+    "SUBTITLE": "Finance",
+    "SELECT_ITINERARY": "Select itinerary",
+    "VIEW_SUMMARY": "View summary",
+    "BUDGET": "Budget",
+    "SPENT": "Spent",
+    "BALANCE": "Balance",
+    "EXPENSES": "Expenses",
+    "LOAD_ERROR": "Could not load report."
+  },
+  "ADMIN": {
+    "TITLE": "User management",
+    "STATUS": "Status",
+    "DEACTIVATE": "Deactivate",
+    "LOAD_ERROR": "Could not load users."
   },
   "COMMON": {
+    "LOADING": "Loading...",
     "TITLE": "Title",
+    "NAME": "Name",
+    "ADDRESS": "Address",
     "DESTINATION": "Destination",
+    "DESTINATION_CODE": "Destination",
+    "ORIGIN": "Origin",
     "START": "Start",
     "END": "End",
     "BUDGET": "Budget",
-    "CREATE": "Create"
+    "CITY": "City",
+    "DAY": "Day",
+    "DURATION": "Duration (min)",
+    "LATITUDE": "Latitude",
+    "LONGITUDE": "Longitude",
+    "NOTES": "Notes",
+    "CREATE": "Create",
+    "SEARCH": "Search",
+    "BOOK": "Book",
+    "CANCEL": "Cancel",
+    "REMOVE": "Remove",
+    "TOGGLE": "Toggle",
+    "SEND": "Send",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "PAUSED": "Paused"
   }
 }

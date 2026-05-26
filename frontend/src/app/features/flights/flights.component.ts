@@ -1,6 +1,7 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { finalize } from 'rxjs';
 import { Flight, FlightAlert } from '../../core/models/travel.models';
 import { FlightService } from '../../core/services/flight.service';
@@ -10,19 +11,19 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
 @Component({
   selector: 'app-flights',
   standalone: true,
-  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe, EmptyStateComponent, FeedbackComponent],
+  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe, TranslateModule, EmptyStateComponent, FeedbackComponent],
   template: `
-    <section class="page-heading compact"><p>Voos</p><h1>Comparação e alertas</h1></section>
+    <section class="page-heading compact"><p>{{ 'FLIGHTS.SUBTITLE' | translate }}</p><h1>{{ 'FLIGHTS.TITLE' | translate }}</h1></section>
     <form class="toolbar" [formGroup]="form" (ngSubmit)="search()">
-      <input formControlName="origin" placeholder="Origem" />
-      <input formControlName="destination" placeholder="Destino" />
+      <input formControlName="origin" [placeholder]="'COMMON.ORIGIN' | translate" />
+      <input formControlName="destination" [placeholder]="'COMMON.DESTINATION_CODE' | translate" />
       <input type="date" formControlName="departureDate" />
       <input type="date" formControlName="returnDate" />
-      <button class="primary" [disabled]="form.invalid || loading()">Comparar</button>
+      <button class="primary" [disabled]="form.invalid || loading()">{{ 'FLIGHTS.COMPARE' | translate }}</button>
     </form>
     <app-feedback [loading]="loading()" [error]="error()" [success]="success()" />
     @if (!loading() && flights().length === 0) {
-      <app-empty-state title="Sem voos" description="Preenche origem e destino para comparar preços." />
+      <app-empty-state [title]="'FLIGHTS.EMPTY_TITLE' | translate" [description]="'FLIGHTS.EMPTY_DESCRIPTION' | translate" />
     }
     <section class="card-grid">
       @for (flight of flights(); track flight.id) {
@@ -31,20 +32,20 @@ import { FeedbackComponent } from '../../shared/components/feedback.component';
           <span>{{ flight.origin }} -> {{ flight.destination }}</span>
           <small>{{ flight.departureAt | date:'short' }} - {{ flight.price | currency:flight.currency }}</small>
           <div class="row">
-            <button class="primary" type="button" (click)="book(flight)">Reservar</button>
-            <button class="ghost" type="button" (click)="createAlert(flight)">Alerta</button>
+            <button class="primary" type="button" (click)="book(flight)">{{ 'COMMON.BOOK' | translate }}</button>
+            <button class="ghost" type="button" (click)="createAlert(flight)">{{ 'FLIGHTS.ALERT' | translate }}</button>
           </div>
         </article>
       }
     </section>
     <section class="panel stack">
-      <h2>Alertas de preço</h2>
+      <h2>{{ 'FLIGHTS.ALERTS' | translate }}</h2>
       @for (alert of alerts(); track alert.id) {
         <div class="row">
-          <span>{{ alert.origin }} -> {{ alert.destination }} | {{ alert.targetPrice | currency }} | {{ alert.enabled ? 'ativo' : 'pausado' }}</span>
+          <span>{{ alert.origin }} -> {{ alert.destination }} | {{ alert.targetPrice | currency }} | {{ (alert.enabled ? 'COMMON.ACTIVE' : 'COMMON.PAUSED') | translate }}</span>
           <div>
-            <button class="ghost" (click)="toggle(alert)">Alternar</button>
-            <button class="ghost" (click)="removeAlert(alert.id)">Remover</button>
+            <button class="ghost" (click)="toggle(alert)">{{ 'COMMON.TOGGLE' | translate }}</button>
+            <button class="ghost" (click)="removeAlert(alert.id)">{{ 'COMMON.REMOVE' | translate }}</button>
           </div>
         </div>
       }
@@ -69,14 +70,14 @@ export class FlightsComponent implements OnInit {
     this.loading.set(true);
     this.service.search(this.form.getRawValue()).pipe(finalize(() => this.loading.set(false))).subscribe({
       next: (items) => this.flights.set(items),
-      error: () => this.error.set('Não foi possível pesquisar voos.')
+      error: () => this.error.set('FLIGHTS.SEARCH_ERROR')
     });
   }
 
   book(flight: Flight): void {
     this.service.book({ flightId: flight.id }).subscribe({
-      next: () => this.success.set('Reserva de voo criada com sucesso.'),
-      error: () => this.error.set('Não foi possível reservar o voo.')
+      next: () => this.success.set('FLIGHTS.BOOK_SUCCESS'),
+      error: () => this.error.set('FLIGHTS.BOOK_ERROR')
     });
   }
 

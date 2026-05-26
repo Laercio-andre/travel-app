@@ -336,6 +336,26 @@ button:disabled {
   border-left: 3px solid var(--primary);
 }
 
+.travel-map {
+  width: 100%;
+  min-height: 380px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.map-hint {
+  color: var(--muted);
+}
+
+.day-plan {
+  display: grid;
+  gap: 0.55rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--border);
+}
+
 .chat-form {
   display: grid;
   grid-template-columns: 1fr auto;

@@ -10,6 +10,8 @@ export interface Itinerary {
   destination: string;
   startDate: string;
   endDate: string;
+  latitude?: number;
+  longitude?: number;
   budget?: number;
   notes?: string;
   stops?: ItineraryStop[];
@@ -21,8 +23,12 @@ export interface ItineraryStop {
   address?: string;
   latitude: number;
   longitude: number;
+  dayNumber?: number;
+  orderIndex?: number;
   visitDate?: string;
   notes?: string;
+  category?: number;
+  durationMinutes?: number;
 }
 
 export interface Hotel {

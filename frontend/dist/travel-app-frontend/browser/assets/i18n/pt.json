@@ -26,7 +26,19 @@
     "LAST_NAME": "Apelido",
     "EMAIL": "Email",
     "PASSWORD": "Senha",
-    "NEW_PASSWORD": "Nova senha"
+    "NEW_PASSWORD": "Nova senha",
+    "FORGOT_SUCCESS": "Pedido concluído com sucesso. Verifica o email.",
+    "FORGOT_DEV_SUCCESS": "Pedido concluído. Token de recuperação: {{token}}. Link: {{url}}",
+    "RESET_SUCCESS": "Senha redefinida com sucesso.",
+    "ERROR_INVALID_EMAIL": "Indica um email válido.",
+    "ERROR_NAME_REQUIRED": "Indica o primeiro e o último nome.",
+    "ERROR_PASSWORD_REQUIRED": "Indica a senha.",
+    "ERROR_TOKEN_REQUIRED": "Indica o token de recuperação.",
+    "ERROR_EMAIL_EXISTS": "Este email já está registado. Faz login ou recupera a senha.",
+    "ERROR_PASSWORD_DIGIT": "A senha deve ter pelo menos 6 caracteres e 1 número.",
+    "ERROR_PASSWORD_SHORT": "A senha deve ter pelo menos 6 caracteres.",
+    "ERROR_INVALID_CREDENTIALS": "Email ou senha inválidos.",
+    "ERROR_GENERIC": "Não foi possível concluir o pedido. Verifica os dados e tenta novamente."
   },
   "DASHBOARD": {
     "WELCOME_BACK": "Bem-vindo de volta",
@@ -38,14 +50,89 @@
   "ITINERARIES": {
     "TITLE": "Roteiros de viagem",
     "SUBTITLE": "Planeamento geográfico",
-    "NEW": "Novo roteiro"
+    "NEW": "Novo roteiro",
+    "EMPTY_TITLE": "Sem roteiros",
+    "EMPTY_DESCRIPTION": "Cria o primeiro roteiro para começares a planear.",
+    "LOAD_ERROR": "Não foi possível carregar os roteiros.",
+    "CREATE_ERROR": "Não foi possível criar o roteiro."
+  },
+  "ITINERARY_DETAIL": {
+    "MAP_TITLE": "Mapa do roteiro",
+    "MAP_HINT": "Clica no mapa para preencher latitude e longitude do próximo ponto.",
+    "MAP_ERROR": "Não foi possível carregar o mapa gratuito.",
+    "NEW_STOP": "Novo ponto",
+    "ADD_STOP": "Adicionar ponto",
+    "AI_TITLE": "Assistente IA",
+    "AI_PLACEHOLDER": "Pede sugestões, otimizações ou estimativas...",
+    "LOAD_ERROR": "Não foi possível carregar o roteiro.",
+    "ADD_STOP_ERROR": "Não foi possível adicionar o ponto.",
+    "AI_ERROR": "O assistente não respondeu. Tenta novamente."
+  },
+  "HOTELS": {
+    "TITLE": "Pesquisa e reservas",
+    "SUBTITLE": "Acomodações",
+    "EMPTY_TITLE": "Sem resultados",
+    "EMPTY_DESCRIPTION": "Pesquisa uma cidade para ver hotéis disponíveis.",
+    "BOOKINGS": "Reservas",
+    "SEARCH_ERROR": "Não foi possível pesquisar hotéis.",
+    "BOOK_SUCCESS": "Reserva criada com sucesso.",
+    "BOOK_ERROR": "Não foi possível criar a reserva."
+  },
+  "FLIGHTS": {
+    "TITLE": "Comparação e alertas",
+    "SUBTITLE": "Voos",
+    "COMPARE": "Comparar",
+    "ALERT": "Alerta",
+    "ALERTS": "Alertas de preço",
+    "EMPTY_TITLE": "Sem voos",
+    "EMPTY_DESCRIPTION": "Preenche origem e destino para comparar preços.",
+    "SEARCH_ERROR": "Não foi possível pesquisar voos.",
+    "BOOK_SUCCESS": "Reserva de voo criada com sucesso.",
+    "BOOK_ERROR": "Não foi possível reservar o voo."
+  },
+  "REPORTS": {
+    "TITLE": "Relatórios e exportação",
+    "SUBTITLE": "Finanças",
+    "SELECT_ITINERARY": "Selecionar roteiro",
+    "VIEW_SUMMARY": "Ver resumo",
+    "BUDGET": "Orçamento",
+    "SPENT": "Gasto",
+    "BALANCE": "Saldo",
+    "EXPENSES": "Despesas",
+    "LOAD_ERROR": "Não foi possível carregar o relatório."
+  },
+  "ADMIN": {
+    "TITLE": "Gestão de utilizadores",
+    "STATUS": "Estado",
+    "DEACTIVATE": "Desativar",
+    "LOAD_ERROR": "Não foi possível carregar utilizadores."
   },
   "COMMON": {
+    "LOADING": "A carregar...",
     "TITLE": "Título",
+    "NAME": "Nome",
+    "ADDRESS": "Endereço",
     "DESTINATION": "Destino",
+    "DESTINATION_CODE": "Destino",
+    "ORIGIN": "Origem",
     "START": "Início",
     "END": "Fim",
     "BUDGET": "Orçamento",
-    "CREATE": "Criar"
+    "CITY": "Cidade",
+    "DAY": "Dia",
+    "DURATION": "Duração (min)",
+    "LATITUDE": "Latitude",
+    "LONGITUDE": "Longitude",
+    "NOTES": "Notas",
+    "CREATE": "Criar",
+    "SEARCH": "Pesquisar",
+    "BOOK": "Reservar",
+    "CANCEL": "Cancelar",
+    "REMOVE": "Remover",
+    "TOGGLE": "Alternar",
+    "SEND": "Enviar",
+    "ACTIVE": "Ativo",
+    "INACTIVE": "Inativo",
+    "PAUSED": "Pausado"
   }
 }

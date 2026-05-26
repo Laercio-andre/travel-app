@@ -34,8 +34,8 @@ public static class ServiceExtensions
         services.AddIdentity<User, IdentityRole<Guid>>(opts =>
         {
             opts.Password.RequireDigit = true;
-            opts.Password.RequiredLength = 8;
-            opts.Password.RequireUppercase = true;
+            opts.Password.RequiredLength = 6;
+            opts.Password.RequireUppercase = false;
             opts.Password.RequireNonAlphanumeric = false;
             opts.User.RequireUniqueEmail = true;
             opts.Lockout.MaxFailedAccessAttempts = 5;
